@@ -18,11 +18,14 @@
 
 import math
 
-def verbing(s):
- if len(s)<3: return s
- elif s.endswith('ing'):return s+'ly'
- else: return s+'ing'
 
+def verbing(s):
+    if len(s) < 3:
+        return s
+    elif s.endswith('ing'):
+        return s + 'ly'
+    else:
+        return s + 'ing'
 
 
 # E. not_bad
@@ -34,12 +37,13 @@ def verbing(s):
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
 def not_bad(s):
-    notpos=s.find('not')
-    badpos=s.find('bad')
-    if badpos>notpos:
-      toreplace=s[notpos:badpos+3]
-      return s.replace(toreplace,'good')
-    else: return s
+    notpos = s.find('not')
+    badpos = s.find('bad')
+    if badpos > notpos:
+        toreplace = s[notpos:badpos + 3]
+        return s.replace(toreplace, 'good')
+    else:
+        return s
     return
 
 
@@ -51,43 +55,44 @@ def not_bad(s):
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
-   alen=len(a)
-   blen=len(b)
-   afront=int(math.ceil(float(alen)/2))
-   bfront=int(math.ceil(float(blen)/2))
-   return a[0:afront]+b[0:bfront]+a[afront:]+b[bfront:]
+    alen = len(a)
+    blen = len(b)
+    afront = int(math.ceil(float(alen) / 2))
+    bfront = int(math.ceil(float(blen) / 2))
+    return a[0:afront] + b[0:bfront] + a[afront:] + b[bfront:]
 
 
 # Simple provided test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
 def test(got, expected):
-  if got == expected:
-    prefix = ' OK '
-  else:
-    prefix = '  X '
-  print '%s got: %s expected: %s' % (prefix, repr(got), repr(expected))
+    if got == expected:
+        prefix = ' OK '
+    else:
+        prefix = '  X '
+    print '%s got: %s expected: %s' % (prefix, repr(got), repr(expected))
 
 
 # main() calls the above functions with interesting inputs,
 # using the above test() to check if the result is correct or not.
 def main():
-  print 'verbing'
-  test(verbing('hail'), 'hailing')
-  test(verbing('swiming'), 'swimingly')
-  test(verbing('do'), 'do')
+    print 'verbing'
+    test(verbing('hail'), 'hailing')
+    test(verbing('swiming'), 'swimingly')
+    test(verbing('do'), 'do')
 
-  print
-  print 'not_bad'
-  test(not_bad('This movie is not so bad'), 'This movie is good')
-  test(not_bad('This dinner is not that bad!'), 'This dinner is good!')
-  test(not_bad('This tea is not hot'), 'This tea is not hot')
-  test(not_bad("It's bad yet not"), "It's bad yet not")
+    print
+    print 'not_bad'
+    test(not_bad('This movie is not so bad'), 'This movie is good')
+    test(not_bad('This dinner is not that bad!'), 'This dinner is good!')
+    test(not_bad('This tea is not hot'), 'This tea is not hot')
+    test(not_bad("It's bad yet not"), "It's bad yet not")
 
-  print
-  print 'front_back'
-  test(front_back('abcd', 'xy'), 'abxcdy')
-  test(front_back('abcde', 'xyz'), 'abcxydez')
-  test(front_back('Kitten', 'Donut'), 'KitDontenut')
+    print
+    print 'front_back'
+    test(front_back('abcd', 'xy'), 'abxcdy')
+    test(front_back('abcde', 'xyz'), 'abcxydez')
+    test(front_back('Kitten', 'Donut'), 'KitDontenut')
+
 
 if __name__ == '__main__':
-  main()
+    main()
